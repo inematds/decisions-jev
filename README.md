@@ -49,3 +49,7 @@ O modo `ao-vivo` lê `OPENAI_API_KEY` e `OPENROUTER_API_KEY` do ambiente (ou de 
 - [Área JEV no INEMA Eventos](https://eventos.inema.pro/jev/) · [projeto jev](https://github.com/inematds/jev) · [curso JEV](https://inematds.github.io/jev-curso/)
 
 Projeto educacional independente. Jev é um modelo da TypeSafe; Decisions API é um produto da OpenAI. Licença MIT.
+
+## Vídeo
+
+[Assistir ao vídeo explicativo](https://inematds.github.io/decisions-jev/videos/) (PT, 5min41s, avatar e voz do Nei; também [no YouTube](https://www.youtube.com/watch?v=O2061m5FG_I)). Fonte: vídeo de Mark Kashef no YouTube.

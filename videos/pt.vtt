@@ -1,0 +1,729 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.940
+Há poucas semanas o Jev virou assunto
+
+2
+00:00:01.940 --> 00:00:02.740
+no mundo inteiro,
+
+3
+00:00:02.740 --> 00:00:05.540
+e logo apareceram dezenas de versões open
+
+4
+00:00:05.540 --> 00:00:06.380
+source.
+
+5
+00:00:06.380 --> 00:00:09.220
+Agora a OpenAI lançou a Decisions API,
+
+6
+00:00:09.220 --> 00:00:11.020
+que é a resposta dela a esse
+
+7
+00:00:11.020 --> 00:00:12.060
+tipo de serviço.
+
+8
+00:00:12.060 --> 00:00:13.900
+Neste vídeo eu mostro o que a
+
+9
+00:00:13.900 --> 00:00:15.080
+Decisions API faz,
+
+10
+00:00:15.080 --> 00:00:16.780
+como ela funciona e,
+
+11
+00:00:16.780 --> 00:00:19.040
+principalmente, como ela se compara ao Jev
+
+12
+00:00:19.040 --> 00:00:21.460
+em custo, velocidade e acerto,
+
+13
+00:00:21.460 --> 00:00:24.020
+com demonstrações lado a lado.
+
+14
+00:00:24.020 --> 00:00:25.340
+Na prática é simples.
+
+15
+00:00:25.340 --> 00:00:28.020
+Você manda um texto ou uma imagem,
+
+16
+00:00:28.020 --> 00:00:29.240
+faz uma pergunta,
+
+17
+00:00:29.240 --> 00:00:32.100
+e recebe de volta uma answer que
+
+18
+00:00:32.100 --> 00:00:33.560
+o seu app consegue usar direto,
+
+19
+00:00:33.560 --> 00:00:36.520
+sem precisar interpretar um texto livre.
+
+20
+00:00:36.520 --> 00:00:37.840
+Assim como no Jev,
+
+21
+00:00:37.840 --> 00:00:40.180
+existem três formatos de pergunta.
+
+22
+00:00:40.180 --> 00:00:42.460
+O primeiro é true or false,
+
+23
+00:00:42.460 --> 00:00:44.180
+um sim ou não.
+
+24
+00:00:44.180 --> 00:00:46.020
+O segundo é multiple choice:
+
+25
+00:00:46.020 --> 00:00:47.960
+qual opção se encaixa melhor.
+
+26
+00:00:47.960 --> 00:00:50.160
+O terceiro é how much:
+
+27
+00:00:50.160 --> 00:00:52.280
+você dá uma rubrica e o modelo
+
+28
+00:00:52.280 --> 00:00:54.020
+escolhe o nível certo para aquele caso.
+
+29
+00:00:54.020 --> 00:00:56.960
+Você define a pergunta e explica o
+
+30
+00:00:56.960 --> 00:00:59.130
+que cada resposta possível significa.
+
+31
+00:00:59.130 --> 00:01:02.040
+E toda resposta volta com uma probabilidade.
+
+32
+00:01:02.450 --> 00:01:03.560
+Numa pergunta como:
+
+33
+00:01:03.560 --> 00:01:05.340
+esta mensagem é spam?,
+
+34
+00:01:05.340 --> 00:01:08.360
+a OpenAI chama o formato de predicate,
+
+35
+00:01:08.360 --> 00:01:09.920
+que é exatamente o que o Jev
+
+36
+00:01:09.920 --> 00:01:10.740
+chama de Noul.
+
+37
+00:01:10.740 --> 00:01:12.360
+O fluxo é este.
+
+38
+00:01:12.360 --> 00:01:14.307
+O seu app envia o request para
+
+39
+00:01:14.307 --> 00:01:16.600
+a OpenAI com um dos três formatos
+
+40
+00:01:16.600 --> 00:01:17.200
+de pergunta.
+
+41
+00:01:17.200 --> 00:01:19.680
+O request vai para o classificador,
+
+42
+00:01:19.680 --> 00:01:22.020
+que aqui é o GPT-6 Luna.
+
+43
+00:01:22.020 --> 00:01:23.840
+Junto vai a evidence,
+
+44
+00:01:23.840 --> 00:01:25.560
+que o Luna lê para avaliar cada
+
+45
+00:01:25.560 --> 00:01:27.860
+resposta possível e o confidence de cada
+
+46
+00:01:27.860 --> 00:01:29.060
+uma.
+
+47
+00:01:29.500 --> 00:01:31.700
+Então toda pergunta tem três partes:
+
+48
+00:01:31.700 --> 00:01:34.580
+o modelo, a evidência e o julgamento
+
+49
+00:01:34.580 --> 00:01:35.220
+a fazer.
+
+50
+00:01:35.220 --> 00:01:36.460
+Para começar rápido,
+
+51
+00:01:36.460 --> 00:01:38.800
+pegue o link da documentação da Decisions
+
+52
+00:01:38.800 --> 00:01:41.020
+API, entregue ao seu assistente,
+
+53
+00:01:41.020 --> 00:01:43.480
+seja Codex, Claude ou Gemini,
+
+54
+00:01:43.480 --> 00:01:45.760
+passe uma API key e pronto.
+
+55
+00:01:45.760 --> 00:01:47.420
+Um exemplo concreto.
+
+56
+00:01:47.420 --> 00:01:50.000
+Imagine uma loja online cuidando de devoluções.
+
+57
+00:01:50.000 --> 00:01:52.000
+Você quer saber que tipo de problema
+
+58
+00:01:52.000 --> 00:01:53.100
+o cliente está relatando.
+
+59
+00:01:53.100 --> 00:01:55.680
+O tipo da pergunta é choice.
+
+60
+00:01:56.060 --> 00:01:58.640
+Nas instructions você explica a tarefa:
+
+61
+00:01:58.640 --> 00:02:00.880
+leia a mensagem do cliente e decida
+
+62
+00:02:00.880 --> 00:02:02.440
+que tipo de problema ele relata.
+
+63
+00:02:02.440 --> 00:02:04.430
+Depois vêm as choices:
+
+64
+00:02:04.430 --> 00:02:06.560
+Damaged, No damage reported,
+
+65
+00:02:06.560 --> 00:02:08.380
+ou Not enough information,
+
+66
+00:02:08.380 --> 00:02:10.320
+que é o famoso não sei.
+
+67
+00:02:10.320 --> 00:02:11.980
+O name é opcional.
+
+68
+00:02:11.980 --> 00:02:14.020
+A API lê o e-mail e devolve
+
+69
+00:02:14.020 --> 00:02:15.800
+a opção escolhida com a porcentagem de
+
+70
+00:02:15.800 --> 00:02:16.460
+confiança.
+
+71
+00:02:16.460 --> 00:02:18.180
+Agora a comparação em tabela.
+
+72
+00:02:18.180 --> 00:02:20.900
+Na evidência, o Jev hoje aceita só
+
+73
+00:02:20.900 --> 00:02:23.620
+texto, e a Decisions API aceita
+
+74
+00:02:23.620 --> 00:02:25.480
+texto e imagem:
+
+75
+00:02:25.480 --> 00:02:27.800
+é um classificador multimodal.
+
+76
+00:02:28.100 --> 00:02:30.120
+Faz sentido, porque os modelos da OpenAI
+
+77
+00:02:30.120 --> 00:02:32.100
+já são multimodais há tempo;
+
+78
+00:02:32.100 --> 00:02:34.320
+ela não treinou um modelo especial para
+
+79
+00:02:34.320 --> 00:02:34.980
+classificar.
+
+80
+00:02:34.980 --> 00:02:36.300
+Nos tipos de resposta,
+
+81
+00:02:36.300 --> 00:02:37.460
+os dois são equivalentes,
+
+82
+00:02:37.460 --> 00:02:39.420
+e os dois respondem várias perguntas sobre
+
+83
+00:02:39.420 --> 00:02:41.480
+a mesma evidência num único request.
+
+84
+00:02:41.480 --> 00:02:43.460
+A diferença grande é o custo:
+
+85
+00:02:43.460 --> 00:02:45.820
+o Jev cobra zero vírgula zero quatro
+
+86
+00:02:45.820 --> 00:02:47.780
+dois dólar por milhão de tokens de
+
+87
+00:02:47.780 --> 00:02:50.285
+entrada, e a Decisions API cobra
+
+88
+00:02:50.285 --> 00:02:51.200
+zero vírgula dez.
+
+89
+00:02:51.200 --> 00:02:53.567
+O Jev sai cinquenta e oito por
+
+90
+00:02:53.567 --> 00:02:54.800
+cento mais barato.
+
+91
+00:02:54.800 --> 00:02:55.860
+E um detalhe:
+
+92
+00:02:55.860 --> 00:02:59.140
+a Decisions API pode recusar uma pergunta,
+
+93
+00:02:59.140 --> 00:03:01.040
+o chamado refusal.
+
+94
+00:03:01.040 --> 00:03:04.020
+O Jev sempre responde dentro das opções
+
+95
+00:03:04.020 --> 00:03:04.816
+que você deu.
+
+96
+00:03:04.840 --> 00:03:06.580
+Vamos às demonstrações.
+
+97
+00:03:06.740 --> 00:03:08.400
+A primeira é com imagem,
+
+98
+00:03:08.400 --> 00:03:11.260
+então aqui só a Decisions API participa,
+
+99
+00:03:11.260 --> 00:03:12.920
+porque o Jev não lê imagem.
+
+100
+00:03:12.920 --> 00:03:14.600
+São fotos de produtos,
+
+101
+00:03:14.600 --> 00:03:16.540
+e ela precisa marcar uma de três
+
+102
+00:03:16.540 --> 00:03:18.830
+categorias: visible damage,
+
+103
+00:03:18.830 --> 00:03:21.020
+no visible damage ou cannot assess.
+
+104
+00:03:21.020 --> 00:03:22.240
+No fone quebrado,
+
+105
+00:03:22.240 --> 00:03:24.140
+a resposta é visible damage,
+
+106
+00:03:24.140 --> 00:03:25.940
+em menos de um segundo e com
+
+107
+00:03:25.940 --> 00:03:27.360
+custo irrisório.
+
+108
+00:03:27.360 --> 00:03:29.540
+No HD externo intacto,
+
+109
+00:03:29.540 --> 00:03:31.260
+no visible damage.
+
+110
+00:03:31.260 --> 00:03:32.920
+E na foto da caixa fechada,
+
+111
+00:03:32.920 --> 00:03:33.780
+cannot assess.
+
+112
+00:03:33.780 --> 00:03:34.780
+As
+
+113
+00:03:34.780 --> 00:03:36.280
+três respostas corretas.
+
+114
+00:03:36.280 --> 00:03:39.320
+A segunda demonstração já compara os dois.
+
+115
+00:03:39.320 --> 00:03:41.780
+Um site sofre quedas e o classificador
+
+116
+00:03:41.780 --> 00:03:45.120
+precisa apontar a causa entre cinco suspeitos:
+
+117
+00:03:45.620 --> 00:03:47.900
+website, payments, auth,
+
+118
+00:03:47.900 --> 00:03:48.860
+database
+
+119
+00:03:48.860 --> 00:03:49.900
+ou provider.
+
+120
+00:03:49.900 --> 00:03:51.180
+Para ser justo,
+
+121
+00:03:51.180 --> 00:03:52.900
+os dois recebem a mesma pergunta,
+
+122
+00:03:52.900 --> 00:03:54.960
+a mesma evidência e as mesmas opções.
+
+123
+00:03:54.960 --> 00:03:55.860
+Clientes
+
+124
+00:03:55.860 --> 00:03:57.960
+sem conseguir abrir a loja,
+
+125
+00:03:57.960 --> 00:03:59.260
+sem conseguir fazer sign in,
+
+126
+00:03:59.260 --> 00:04:00.780
+sem conseguir fechar o checkout.
+
+127
+00:04:00.780 --> 00:04:02.400
+Em todos os testes,
+
+128
+00:04:02.400 --> 00:04:05.160
+a Decisions API foi ligeiramente mais rápida,
+
+129
+00:04:05.160 --> 00:04:06.580
+por exemplo cento e quarenta e quatro
+
+130
+00:04:06.580 --> 00:04:09.280
+contra cento e sessenta e cinco milissegundos,
+
+131
+00:04:09.280 --> 00:04:11.580
+e o Jev foi sempre mais barato.
+
+132
+00:04:11.580 --> 00:04:13.460
+No modo full investigation,
+
+133
+00:04:13.460 --> 00:04:15.320
+em que o modelo decide o quanto
+
+134
+00:04:15.320 --> 00:04:18.780
+aprofundar, os dois chegam à mesma conclusão.
+
+135
+00:04:18.780 --> 00:04:20.660
+A terceira é a verificação de um
+
+136
+00:04:20.660 --> 00:04:21.500
+relatório da empresa,
+
+137
+00:04:21.500 --> 00:04:24.840
+com cinco afirmações para checar contra os
+
+138
+00:04:24.840 --> 00:04:25.460
+registros.
+
+139
+00:04:25.460 --> 00:04:27.460
+Cada afirmação recebe supported,
+
+140
+00:04:27.460 --> 00:04:30.900
+contradicted ou insufficient evidence.
+
+141
+00:04:30.900 --> 00:04:32.760
+Os dois concordaram em cem por cento
+
+142
+00:04:32.760 --> 00:04:35.160
+das respostas, com tempo de resposta muito
+
+143
+00:04:35.160 --> 00:04:35.840
+parecido.
+
+144
+00:04:35.840 --> 00:04:38.270
+A maior diferença ficou em torno de
+
+145
+00:04:38.270 --> 00:04:39.320
+cinquenta milissegundos.
+
+146
+00:04:39.320 --> 00:04:40.760
+E o custo do Jev,
+
+147
+00:04:40.760 --> 00:04:43.050
+de novo, ficou entre quarenta e cinquenta
+
+148
+00:04:43.050 --> 00:04:44.020
+por cento menor.
+
+149
+00:04:44.020 --> 00:04:45.940
+Juntando tudo.
+
+150
+00:04:46.060 --> 00:04:47.840
+Na verificação de relatórios,
+
+151
+00:04:47.840 --> 00:04:50.200
+os dois acertaram todas as respostas.
+
+152
+00:04:50.200 --> 00:04:52.540
+A chamada média foi de cento e
+
+153
+00:04:52.540 --> 00:04:55.100
+cinquenta e cinco milissegundos no Jev contra
+
+154
+00:04:55.100 --> 00:04:56.980
+cento e quarenta e seis na OpenAI.
+
+155
+00:04:56.980 --> 00:04:58.900
+Na investigação de quedas,
+
+156
+00:04:58.900 --> 00:05:00.840
+o Jev custou quase metade.
+
+157
+00:05:00.840 --> 00:05:03.220
+Essa diferença de custo só pesa de
+
+158
+00:05:03.220 --> 00:05:05.640
+verdade na casa dos milhões de chamadas;
+
+159
+00:05:05.640 --> 00:05:07.980
+em dezenas ou milhares,
+
+160
+00:05:07.980 --> 00:05:09.320
+quase não se nota.
+
+161
+00:05:09.320 --> 00:05:11.420
+O veredito: precisa de imagem,
+
+162
+00:05:11.420 --> 00:05:12.600
+Decisions API.
+
+163
+00:05:12.600 --> 00:05:14.420
+Menor custo em escala,
+
+164
+00:05:14.420 --> 00:05:14.820
+Jev.
+
+165
+00:05:14.820 --> 00:05:16.400
+Chamada média mais rápida,
+
+166
+00:05:16.400 --> 00:05:17.580
+OpenAI.
+
+167
+00:05:17.580 --> 00:05:19.460
+Investigação mediana mais rápida,
+
+168
+00:05:19.460 --> 00:05:19.640
+Jev.
+
+169
+00:05:19.640 --> 00:05:20.940
+E no acerto,
+
+170
+00:05:20.940 --> 00:05:22.140
+empate.
+
+171
+00:05:22.860 --> 00:05:25.000
+Resumindo: se você quer o mais barato,
+
+172
+00:05:25.000 --> 00:05:26.000
+use o Jev.
+
+173
+00:05:26.000 --> 00:05:28.040
+Se precisa de imagem e um pouco
+
+174
+00:05:28.040 --> 00:05:29.160
+mais de velocidade,
+
+175
+00:05:29.160 --> 00:05:30.760
+use a Decisions API.
+
+176
+00:05:30.760 --> 00:05:32.560
+Esse cenário muda toda semana,
+
+177
+00:05:32.560 --> 00:05:34.260
+então vale testar com os seus próprios
+
+178
+00:05:34.260 --> 00:05:34.740
+dados.
+
+179
+00:05:34.740 --> 00:05:36.240
+E se você quer aprender a usar
+
+180
+00:05:36.240 --> 00:05:38.420
+decisões de IA na prática,
+
+181
+00:05:38.420 --> 00:05:40.760
+os projetos e cursos são gratuitos no
+
+182
+00:05:40.760 --> 00:05:41.747
+inema ponto club.
