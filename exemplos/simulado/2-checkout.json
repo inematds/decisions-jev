@@ -1,0 +1,11 @@
+{
+  "caso": "Incidente: checkout falhando",
+  "openai": {"answers": [
+    {"type": "choice", "name": "origem", "choice": "pagamento",
+     "probabilities": [{"value": "site", "probability": 0.04}, {"value": "pagamento", "probability": 0.91}, {"value": "autenticacao", "probability": 0.01}, {"value": "banco", "probability": 0.02}, {"value": "insuficiente", "probability": 0.02}],
+     "confidence": 0.9}
+  ], "usage": {"input_tokens": 268}},
+  "jev": {"answers": {
+    "origem": {"type": "choice", "choice": "pagamento", "probabilities": {"site": 0.05, "pagamento": 0.89, "autenticacao": 0.01, "banco": 0.03, "insuficiente": 0.02}, "confidence": 0.88}
+  }, "usage": {"input_tokens": 281, "output_tokens": 40, "cost": 0.0000118}}
+}

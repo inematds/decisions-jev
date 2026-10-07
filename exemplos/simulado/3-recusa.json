@@ -1,0 +1,9 @@
+{
+  "caso": "Pergunta que a OpenAI recusa (o Jev sempre escolhe uma opção)",
+  "openai": {"answers": [
+    {"type": "refusal", "name": "perfil"}
+  ], "usage": {"input_tokens": 190}},
+  "jev": {"answers": {
+    "perfil": {"type": "choice", "choice": "insuficiente", "probabilities": {"a": 0.2, "b": 0.25, "insuficiente": 0.55}, "confidence": 0.41}
+  }, "usage": {"input_tokens": 201, "output_tokens": 30, "cost": 0.0000084}}
+}

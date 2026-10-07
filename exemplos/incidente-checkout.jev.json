@@ -1,0 +1,17 @@
+{
+  "model": "~typesafe/jev-latest",
+  "state": {"sintoma": "clientes não concluem o checkout", "logs": ["POST /pagar 502 em 38% das tentativas", "gateway de pagamento: timeout após 10 s", "login e catálogo sem erros"]},
+  "questions": {
+    "origem": {
+      "type": "choice",
+      "instructions": "De onde vem a falha mais provável?",
+      "criteria": {
+        "site": "Front-end ou servidor da loja.",
+        "pagamento": "Gateway ou provedor de pagamento.",
+        "autenticacao": "Login, sessão ou permissões.",
+        "banco": "Banco de dados.",
+        "insuficiente": "Os dados não permitem decidir."
+      }
+    }
+  }
+}

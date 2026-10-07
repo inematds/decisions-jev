@@ -1,0 +1,19 @@
+{
+  "model": "gpt-6-luna",
+  "input": [{
+    "role": "user",
+    "content": [
+      {"type": "input_text", "text": "Cliente pede devolução: 'o fone chegou com a haste quebrada'. Foto anexada."},
+      {"type": "input_image", "image_url": "data:image/png;base64,COLE_AQUI_A_IMAGEM"}
+    ]
+  }],
+  "questions": [
+    {"type": "predicate", "name": "dano_visivel", "instructions": "O produto na foto tem dano visível (rachadura, quebra, amassado)? Ignore sombras e a embalagem."},
+    {"type": "choice", "name": "situacao", "instructions": "Como classificar o pedido?",
+     "choices": [
+       {"value": "danificado", "description": "Dano visível compatível com o relato."},
+       {"value": "sem_dano", "description": "Produto íntegro na foto."},
+       {"value": "nao_avaliavel", "description": "Foto não mostra o produto (ex.: caixa fechada)."}
+     ]}
+  ]
+}
