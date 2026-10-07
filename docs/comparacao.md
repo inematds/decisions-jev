@@ -7,7 +7,7 @@ Levantamento de 07/10/2026. Cada linha diz de onde veio a informação. Nada aqu
 Fonte: [guia Decisions da OpenAI](https://developers.openai.com/api/docs/guides/decisions) (versão em Markdown: acrescente `.md` à URL).
 
 - Endpoint próprio: `POST /v1/decisions`. Não é o Responses API nem chat.
-- Situação: **beta pública**, lançada em 06/10/2026, com GA prevista "nas próximas semanas".
+- Situação: **beta pública**, com GA prevista "nas próximas semanas". (A data de lançamento, 06/10/2026, vem da cobertura do lançamento, não do guia.)
 - Modelo: `gpt-6-luna` é o único disponível.
 - Entrada: texto, imagem ou os dois. Imagem **só como data URL base64** (URL http/https e `file_id` não são aceitos).
 - Três tipos de pergunta, que podem ir juntas na mesma requisição:
@@ -28,7 +28,7 @@ Fonte: [inematds/jev](https://github.com/inematds/jev) (`jev_lab/core.py`, `repo
 - Tipos: `choice`, `noul` (sim/não) e `score`; alternativas e níveis em `criteria`.
 - Só texto: não aceita imagem.
 - Preço usado no laboratório: US$ 0,042 por 1M de tokens de entrada. Diferente da OpenAI, a resposta do Jev traz `output_tokens` e o `cost` cobrado.
-- Não há tipo de recusa: o Jev sempre responde dentro das opções dadas. Por isso vale incluir uma opção `insuficiente`.
+- O formato de resposta usado no `jev_lab` não tem tipo de recusa. Que o Jev "sempre responde dentro das opções" é observação do autor do vídeo 1; por isso vale incluir uma opção `insuficiente`.
 
 ## 3. Mapa de equivalência (o que a ponte faz)
 
