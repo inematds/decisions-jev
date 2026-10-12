@@ -30,6 +30,31 @@ Fonte: [inematds/jev](https://github.com/inematds/jev) (`jev_lab/core.py`, `repo
 - Preço usado no laboratório: US$ 0,042 por 1M de tokens de entrada. Diferente da OpenAI, a resposta do Jev traz `output_tokens` e o `cost` cobrado.
 - O formato de resposta usado no `jev_lab` não tem tipo de recusa. Que o Jev "sempre responde dentro das opções" é observação do autor do vídeo 1; por isso vale incluir uma opção `insuficiente`.
 
+## 2b. Microsoft-Decision-1 (lançado em 09/10/2026)
+
+Fontes: anúncio da Microsoft (Achint Srivastava, escritório do CTO) e post de Satya Nadella em 09/10/2026, resumidos pela [TestingCatalog](https://www.testingcatalog.com/microsoft-launches-decision-1-model-in-foundry/) e pela [RuntimeWire](https://runtimewire.com/article/microsoft-decision-1-achint-srivastava-agent-workflows). Levantamento de 11/10/2026; não chamamos este modelo.
+
+- Mesma categoria do Jev e da Decisions API: recebe um conjunto fixo de opções e devolve uma probabilidade calibrada para cada uma, numa passada só. A Microsoft chama de "decision models".
+- Tipos: sim/não, múltipla escolha e nota; também avalia respostas de IA e ações de agentes contra uma rubrica. Os nomes dos campos da API não aparecem nas fontes acima.
+- Entrada: **só texto**, até 32.768 tokens. Não gera explicação, não responde perguntas abertas, não lê imagem, áudio nem vídeo (ficha no Foundry).
+- Recusa: as fontes não dizem se existe um tipo de resposta de recusa. Nos testes de segurança (5.250 pedidos, 11 benchmarks) ele recusou os pedidos nocivos.
+- Base: Qwen3.5-9B (Alibaba) pós-treinado pela Microsoft; plano de trocar a base por modelos da própria Microsoft (MAI) e da OpenAI.
+- Preço: **US$ 0,042 por 1M de tokens de entrada** (igual ao Jev), saída grátis.
+- Onde: Microsoft Foundry; OpenRouter anunciado como "em breve", sem data.
+- Números da própria Microsoft (não independentes): maior acerto em 36 benchmarks com ~150 mil perguntas fora do treino; 35× mais rápido que o GPT-6 Sol na latência P50; decisão mudou em 1,3% dos pedidos reescritos de 8 formas. A Microsoft cita o JevBench e publicou depois os números de acerto e calibração do Jev 2.
+
+| | OpenAI Decisions API | Jev | Microsoft-Decision-1 |
+|---|---|---|---|
+| Sim/não | `predicate` | `noul` | sim/não |
+| Opção da lista | `choice` + `choices` | `choice` + `criteria` | múltipla escolha |
+| Nota | `score` + `levels` | `score` + `criteria` | nota e rubrica |
+| Imagem | sim (base64) | não | não (só texto, até 32.768 tokens) |
+| Recusa | `refusal` | não existe | não informado |
+| Preço de entrada | US$ 0,10 / 1M | US$ 0,042 / 1M | US$ 0,042 / 1M (saída grátis) |
+| Onde | API OpenAI | OpenRouter, TypeSafe | Microsoft Foundry (OpenRouter em breve) |
+
+A ponte deste repositório ainda converte só entre Jev e OpenAI.
+
 ## 3. Mapa de equivalência (o que a ponte faz)
 
 | Jev | Decisions API | Observação |

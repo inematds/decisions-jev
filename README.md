@@ -14,14 +14,14 @@ Guia completo (landing + passo a passo): **https://inematds.github.io/decisions-
 
 ## Em 30 segundos
 
-| | OpenAI Decisions API | Jev |
-|---|---|---|
-| Sim/não | `predicate` | `noul` |
-| Opção da lista | `choice` + `choices` | `choice` + `criteria` |
-| Nota | `score` + `levels` | `score` + `criteria` |
-| Imagem | sim (base64) | não |
-| Recusa | `refusal` | não existe |
-| Preço de entrada | US$ 0,10 / 1M tokens | US$ 0,042 / 1M tokens |
+| | OpenAI Decisions API | Jev | Microsoft-Decision-1 |
+|---|---|---|---|
+| Sim/não | `predicate` | `noul` | sim/não |
+| Opção da lista | `choice` + `choices` | `choice` + `criteria` | múltipla escolha |
+| Nota | `score` + `levels` | `score` + `criteria` | nota e rubrica |
+| Imagem | sim (base64) | não | não (só texto, até 32.768 tokens) |
+| Recusa | `refusal` | não existe | não informado |
+| Preço de entrada | US$ 0,10 / 1M tokens | US$ 0,042 / 1M tokens | US$ 0,042 / 1M tokens (saída grátis) |
 
 Fontes, números dos vídeos e quando usar cada um: [docs/comparacao.md](docs/comparacao.md).
 

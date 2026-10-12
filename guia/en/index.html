@@ -162,17 +162,17 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 18px}t
   <h2>What is the same and what changes</h2>
   <p class="sub">Both answer the same three ways of asking. The differences are in the input, in refusal and in price.</p>
   <div class="tbl"><table class="cmp">
-    <tr><th></th><th>OpenAI Decisions API</th><th>Jev (TypeSafe)</th></tr>
-    <tr><td>Yes or no</td><td><code>predicate</code> → probability from 0 to 1</td><td><code>noul</code> → probability from 0 to 1</td></tr>
-    <tr><td>One option from a list</td><td><code>choice</code> + <code>choices</code>, com <code>confidence</code></td><td><code>choice</code> + <code>criteria</code>, com <code>confidence</code></td></tr>
-    <tr><td>Score on a scale</td><td><code>score</code> + <code>levels</code> (0-based index)</td><td><code>score</code> + <code>criteria</code> as a list</td></tr>
-    <tr><td>Input</td><td>Text <b>and image</b> (base64 only)</td><td>Text only</td></tr>
-    <tr><td>Refusal</td><td>May answer <code>refusal</code></td><td>Always picks among the options</td></tr>
-    <tr><td>Model</td><td><code>gpt-6-luna</code> (only one)</td><td><code>~typesafe/jev-latest</code></td></tr>
-    <tr><td>Price (input)</td><td>US$ 0.10 per 1M tokens, no output charge</td><td>US$ 0.042 per 1M tokens</td></tr>
-    <tr><td>Status</td><td>Public beta since Oct 6, 2026</td><td>Available, no waitlist</td></tr>
+    <tr><th></th><th>OpenAI Decisions API</th><th>Jev (TypeSafe)</th><th>Microsoft-Decision-1</th></tr>
+    <tr><td>Yes or no</td><td><code>predicate</code> → probability from 0 to 1</td><td><code>noul</code> → probability from 0 to 1</td><td>yes/no → calibrated probability</td></tr>
+    <tr><td>One option from a list</td><td><code>choice</code> + <code>choices</code>, with <code>confidence</code></td><td><code>choice</code> + <code>criteria</code>, with <code>confidence</code></td><td>multiple choice → probability for each option</td></tr>
+    <tr><td>Score on a scale</td><td><code>score</code> + <code>levels</code> (0-based index)</td><td><code>score</code> + <code>criteria</code> as a list</td><td>rating and rubric (grades answers and agent actions)</td></tr>
+    <tr><td>Input</td><td>Text <b>and image</b> (base64 only)</td><td>Text only</td><td>Text only (up to 32,768 tokens)</td></tr>
+    <tr><td>Refusal</td><td>May answer <code>refusal</code></td><td>Always picks among the options</td><td>Not stated</td></tr>
+    <tr><td>Model</td><td><code>gpt-6-luna</code> (only one)</td><td><code>~typesafe/jev-latest</code></td><td>Qwen3.5-9B post-trained by Microsoft</td></tr>
+    <tr><td>Price (input)</td><td>US$ 0.10 per 1M tokens, no output charge</td><td>US$ 0.042 per 1M tokens</td><td>US$ 0.042 per 1M tokens, free output</td></tr>
+    <tr><td>Status</td><td>Public beta since Oct 6, 2026</td><td>Available, no waitlist</td><td>Microsoft Foundry since Oct 9, 2026; OpenRouter "coming soon"</td></tr>
   </table></div>
-  <p class="src">Sources: OpenAI's official guide (developers.openai.com/api/docs/guides/decisions) and the inematds/jev project. Details in <a href="https://github.com/inematds/decisions-jev/blob/main/docs/comparacao.md">docs/comparacao.md (in Portuguese)</a>.</p>
+  <p class="src">Sources: OpenAI's official guide (developers.openai.com/api/docs/guides/decisions), the inematds/jev project and the Microsoft-Decision-1 announcement (Oct 9, 2026, Microsoft Foundry). Details in <a href="https://github.com/inematds/decisions-jev/blob/main/docs/comparacao.md">docs/comparacao.md (in Portuguese)</a>.</p>
 
   <h3 style="margin-top:28px">What the videos measured</h3>
   <p>Two creators tested the APIs right at launch. The numbers below are <b>theirs</b>, with few and easy questions — they are an indication, not a benchmark.</p>

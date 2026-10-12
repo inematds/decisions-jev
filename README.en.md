@@ -14,14 +14,14 @@ Full guide (landing + step by step): **https://inematds.github.io/decisions-jev/
 
 ## In 30 seconds
 
-| | OpenAI Decisions API | Jev |
-|---|---|---|
-| Yes/no | `predicate` | `noul` |
-| One option from a list | `choice` + `choices` | `choice` + `criteria` |
-| Score | `score` + `levels` | `score` + `criteria` |
-| Image | yes (base64) | no |
-| Refusal | `refusal` | does not exist |
-| Input price | US$ 0.10 / 1M tokens | US$ 0.042 / 1M tokens |
+| | OpenAI Decisions API | Jev | Microsoft-Decision-1 |
+|---|---|---|---|
+| Yes/no | `predicate` | `noul` | yes/no |
+| One option from a list | `choice` + `choices` | `choice` + `criteria` | multiple choice |
+| Score | `score` + `levels` | `score` + `criteria` | rating and rubric |
+| Image | yes (base64) | no | no (text only, up to 32,768 tokens) |
+| Refusal | `refusal` | does not exist | not stated |
+| Input price | US$ 0.10 / 1M tokens | US$ 0.042 / 1M tokens | US$ 0.042 / 1M tokens (output free) |
 
 Sources, the videos' numbers and when to use each one: [docs/comparacao.md](docs/comparacao.md) (in Portuguese).
 
